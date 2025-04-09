@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'openai'
+    'uiia'
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# settings.py
+
+# URL base para acceder a los archivos cargados
+MEDIA_URL = '/media/'
+
+# Ruta en el sistema de archivos donde se almacenan los archivos cargados
+MEDIA_ROOT = BASE_DIR / 'media'
