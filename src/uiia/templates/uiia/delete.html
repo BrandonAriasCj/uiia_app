@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Crea un nuevo componente</h1>
+<p>En este espacio defines tus componentes con IA</p>
+
+<div style="display: flex; gap: 2rem; margin-top: 2rem; align-items: flex-start;">
+
+    <!-- Sección del formulario -->
+    <form method="POST" action="" style="display: flex; flex-direction: column; width: 50%;">
+        {% csrf_token %}
+        <label for="prompt" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Prompt:</label>
+        <textarea id="prompt" name="prompt" rows="5" style="width: 70%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; font-family: monospace;" placeholder="Ej. Un botón grande azul con ícono de guardar"></textarea>
+        
+        <button type="submit" style="
+            background-color: var(--color-primario);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            margin-top: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            width: 70%;
+        ">Generar</button>
+    </form>
+
+    <!-- Sección de vista previa del componente -->
+    <div style="flex: 1; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); min-height: 300px;">
+        <h2 style="margin-bottom: 1rem;">Vista previa del componente:</h2>
+        <div style="background: #f9fafb; padding: 1rem; border-radius: 6px; min-height: 200px;">
+            Componente
+        </div>
+    </div>
+
+</div>
+{% endblock %}

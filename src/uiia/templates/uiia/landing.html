@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Sección Hero (Encabezado principal) -->
+    <header class="bg-dark text-white text-center py-5">
+        <h1 class="display-4 mb-4">Genera Componentes UI con IA</h1>
+        <p class="lead mb-8">Transforma tu diseño con inteligencia artificial en segundos. ¡Fácil, rápido y moderno!</p>
+        <a href="{% url 'crear_componente' %}" class="btn btn-primary btn-lg">Comienza ahora</a>
+    </header>
+
+    <!-- Sección de imágenes o ilustraciones -->
+    <section class="d-flex justify-content-center my-5 h-50">
+        <img src="/media/ui.jpg" alt="Imagen sobre generacion de componentes UI" class="img-fluid mx-4 rounded">
+    </section>
+
+    <!-- Descripción de cómo funciona -->
+    <section class="bg-light py-5">
+        <div class="container text-center">
+            <h2 class="h3 mb-4">¿Cómo funciona?</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="h5">1. Define tu componente</h3>
+                    <p>Escribe una descripción de lo que necesitas, como un botón, formulario o menú.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5">2. Generación por IA</h3>
+                    <p>Deja que nuestra IA cree el código UI perfecto según tu descripción.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5">3. Obtén el código</h3>
+                    <p>Recibe el código listo para usar, completamente personalizable para tu proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonios -->
+    <section class="bg-dark text-white py-5">
+        <div class="container text-center">
+            <h2 class="h3 mb-4">Lo que dicen nuestros usuarios</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="italic">"¡Increíble! Generé un componente en segundos, y se integró perfectamente en mi proyecto."</p>
+                    <p class="fw-bold mt-3">Juan Pérez</p>
+                    <p>Desarrollador Frontend</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="italic">"La herramienta es muy fácil de usar y ahorra tanto tiempo en el desarrollo de interfaces."</p>
+                    <p class="fw-bold mt-3">María López</p>
+                    <p>Diseñadora UI/UX</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="italic">"¡El futuro del diseño web está aquí! ¡Estoy muy impresionado con los resultados!"</p>
+                    <p class="fw-bold mt-3">Carlos García</p>
+                    <p>Freelancer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

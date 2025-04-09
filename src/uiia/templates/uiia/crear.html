@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="padding-left: 3rem;">
+    <h1>Crea un nuevo componente</h1>
+    <p>Crea una hoja en blanco para plasmar tus ideas</p>
+</div>
+
+<div style="display: flex; justify-content: space-between; margin: 2rem;">
+    <!-- Formulario para crear un proyecto -->
+    <div style="flex: 1; background-color: white; padding: 2rem 10rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); margin-right: 2rem;">
+        <h1 style="text-align: center; color: #333;">Crear Proyecto</h1>
+        <form action="#" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="margin-bottom: 1rem;">
+                <label for="nombre" style="font-weight: bold; margin-bottom: 0.5rem; display: block;">Nombre del Proyecto:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del proyecto" required
+                    style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <button type="submit" style="background-color: var(--color-primario); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%;">Crear Proyecto</button>
+            </div>
+        </form> 
+    </div>
+
+    <!-- Espacio para la imagen (estática) -->
+    <div style="flex: 0 0 300px; background-color: #fff; padding: 0rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); text-align: center;">
+        <img src="	https://i.pinimg.com/736x/a9/bf/7e/a9bf7e1aab646b23c70ea373a7aa1030.jpg" alt="Vista previa de la imagen"
+            style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);">
+    </div>
+</div>
+{% endblock %}

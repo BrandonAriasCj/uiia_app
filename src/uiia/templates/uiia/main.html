@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="font-size: 2rem; margin-bottom: 1rem;">Mis Componentes UI</h1>
+
+{% if objetos %}
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        {% for i in objetos %}
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+                <h2 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">{{i.nombre}}</h2>
+                <p style="color: #555;">{{ i.descripcion|default:"Componente descripcion"}}</p>
+                
+                <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+                    <a href="{% url 'generar_componente' i.id%}" style="background-color: var(--color-primario); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none;">Ver</a>
+                    <!-- <a href="#" style="color: #888; text-decoration: underline;">Editar</a> -->
+                    <form method="POST" action="{% url 'eliminar_componente' i.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: transparent; border: none; color: red; cursor: pointer;">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p style="color: #666;">No se han generado componentes aún.</p>
+{% endif %}
+
+{% endblock %}

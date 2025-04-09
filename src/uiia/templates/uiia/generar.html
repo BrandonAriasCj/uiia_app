@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 style="font-size: 2rem; font-weight: bold; margin-top: 1rem;">Generar Componente UI</h1>
+
+<div style="
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 130px;
+    height: 100%;
+">
+
+    <!-- Sección del formulario -->
+    <div style="
+        flex: 1 1 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        box-sizing: border-box;
+    ">
+        <h2 style="margin-bottom: 0.5rem;">{{objeto.nombre}}</h2>
+        <p style="margin-bottom: 1rem;">Describe el componente que deseas generar con IA:</p>
+
+        <form id="generar" method="POST" style="
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        ">
+            {% csrf_token %}
+            <label for="prompt" style="
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+            ">Prompt:</label>
+            <textarea id="prompt" name="prompt" rows="5" style="
+                width: 100%;
+                padding: 1rem;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                font-family: monospace;
+                resize: vertical;
+            " placeholder="Ej. Un botón grande azul con ícono de guardar"></textarea>
+
+            <button type="submit" style="
+                background-color: var(--color-primario);
+                color: white;
+                padding: 0.75rem 1.5rem;
+                border: none;
+                border-radius: 6px;
+                margin-top: 1rem;
+                cursor: pointer;
+                font-weight: bold;
+                width: 100%;
+            ">Generar</button>
+        </form>
+    </div>
+
+    <!-- Sección de vista previa del componente -->
+    <div style="
+        flex: 1 1 100%;
+        max-width: 800px;
+        padding: 1rem;
+        box-sizing: border-box;
+    ">
+        <h2 style="margin-bottom: 1rem;">Vista previa del componente:</h2>
+        <div style="
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 1rem;
+            min-height: 300px;
+            height: 100%;
+        ">
+            <div style="
+                background: #f9fafb;
+                padding: 1rem;
+                border-radius: 6px;
+                height: 100%;
+                overflow-x: auto;
+            ">
+                {{objeto.codigo_generado|safe}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal de carga -->
+<div id="loadingModal" style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+">
+    <div class="modal-content" style="
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        text-align: center;
+        width: 300px;
+        max-width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    ">
+
+        <img src="/media/uiiacat.gif" alt="safads" style="
+                width: 150px;
+                height: 150px;
+                margin-bottom: 1rem;
+        ">
+        <p style="font-size: 1rem; font-weight: 500;">Cargando, por favor espera...</p>
+    </div>
+</div>
+
+<!-- Animación del loader -->
+<style>
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
+<!-- Script para mostrar el modal al enviar -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("generar");
+        const modal = document.getElementById("loadingModal");
+    
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // Evita el envío inmediato
+            modal.style.display = "flex"; // Muestra el modal
+    
+            // Espera unos milisegundos para permitir mostrar el modal, luego envía el formulario
+            setTimeout(() => {
+                form.submit();
+            }, 10); // Puedes aumentar si es necesario
+        });
+    });
+</script>
+    
+
+
+
+{% endblock %}
