@@ -3,6 +3,7 @@ venv/
 env/
 # .gitignore
 .env
+uiia/.env
 # Archivos de configuración
 *.env
 
