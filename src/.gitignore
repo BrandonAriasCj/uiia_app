@@ -1,7 +1,8 @@
 # Entornos virtuales
 venv/
 env/
-
+# .gitignore
+.env
 # Archivos de configuración
 *.env
 
